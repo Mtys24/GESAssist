@@ -15,8 +15,8 @@ El objetivo principal de este proyecto es explorar patrones en los diagnósticos
 ## 🚀 Aplicación en Vivo (Dashboard)
 Puedes acceder y probar la aplicación directamente desde tu navegador sin instalar nada:
 
-🌐 **[🔗 Enlace al Dashboard GESAssist en Streamlit Cloud](https://#)**  
-*(Nota: Reemplaza este enlace por la URL pública generada tras tu despliegue en Streamlit Community Cloud).*
+🌐 **[🔗 Enlace al Dashboard GESAssist en Streamlit Cloud](https://)**  
+
 
 ---
 
@@ -72,17 +72,19 @@ GESAssist/
 │   └── 03_analisis.ipynb    # Respuestas a la pregunta principal
 ├── outputs/                 # Gráficos e imágenes exportadas
 ├── requirements.txt         # Dependencias del proyecto
-└── pauta_evaluacion_ia.md   # Rúbrica de evaluación de referencia
+
 ```
 
 ---
 
 ## 🧑‍💻 Equipo de Trabajo
 
-| Integrante | Rol en el Proyecto |
-|------------|--------------------|
-| **Matías (Mtys24)** | Data Scientist & Analista de Datos (Autor) |
-*(Si hubo más integrantes, añadir aquí).*
+| Integrante                | Rol en el Proyecto                 |
+|---------------------------|------------------------------------|
+| **Matías Manríquez**      | Data Scientist & Analista de Datos |
+| **José Salgado Escalona** | Data Scientist & Analista de Datos |
+| **Ignacio Madriaga**      | Data Scientist & Analista de Datos |
+| **Daniel Segovia**        | Data Scientist & Analista de Datos |
 
 ---
 *Desarrollado para el proyecto final de Data Science.*
