@@ -15,7 +15,7 @@ El objetivo principal de este proyecto es explorar patrones en los diagnósticos
 ## 🚀 Aplicación en Vivo (Dashboard)
 Puedes acceder y probar la aplicación directamente desde tu navegador sin instalar nada:
 
-🌐 **[🔗 Enlace al Dashboard GESAssist en Streamlit Cloud](https://)**  
+🌐 **[🔗 Enlace al Dashboard GESAssist en Streamlit Cloud](https://mtys24-gesassist-app-trds27.streamlit.app/)**  
 
 
 ---
