@@ -52,7 +52,13 @@ Si deseas ejecutar este proyecto en tu propia máquina, sigue estos pasos:
    pip install -r requirements.txt
    ```
 
-4. **Ejecutar la aplicación Streamlit:**
+4. **Configurar el Asistente de IA (Opcional pero recomendado):**
+   Para habilitar la pestaña del Asistente de Inteligencia Artificial (Llama-3), debes configurar tu token gratuito de HuggingFace.
+   - Crea una copia del archivo `.env.example` y renómbralo a `.env`.
+   - Abre `.env` y pega tu token: `HF_TOKEN=hf_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`.
+   *(Si omites este paso, el dashboard funcionará perfectamente, pero la pestaña de la IA estará desactivada).*
+
+5. **Ejecutar la aplicación Streamlit:**
    ```bash
    streamlit run app.py
    ```
