@@ -12,6 +12,35 @@ st.set_page_config(
     layout="wide"
 )
 
+st.markdown("""
+<style>
+    /* Estilos Premium / WOW Factor */
+    .stApp {
+        background-color: #f4f6f9;
+    }
+    h1, h2, h3 {
+        color: #1a2b4c !important;
+        font-family: 'Inter', sans-serif;
+    }
+    /* Estilo de tarjetas para métricas */
+    [data-testid="metric-container"] {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        border-left: 5px solid #3498db;
+        transition: transform 0.2s ease;
+    }
+    [data-testid="metric-container"]:hover {
+        transform: translateY(-3px);
+    }
+    [data-testid="stMetricValue"] {
+        color: #2c3e50 !important;
+        font-size: 2rem !important;
+    }
+</style>
+""", unsafe_allow_html=True)
+
 # ============================================================
 # CARGA DE DATOS
 # ============================================================
@@ -226,6 +255,22 @@ st.subheader("Datos filtrados")
 st.dataframe(
     df_filtrado[["id", "diagnostic", "age", "ges"]],
     use_container_width=True
+)
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+# Opción de descarga
+@st.cache_data
+def convert_df(df):
+    return df.to_csv(index=False).encode('utf-8')
+
+csv_data = convert_df(df_filtrado)
+
+st.download_button(
+    label="📥 Descargar datos filtrados (CSV)",
+    data=csv_data,
+    file_name='dataset_filtrado_ges.csv',
+    mime='text/csv',
 )
 
 # ============================================================
