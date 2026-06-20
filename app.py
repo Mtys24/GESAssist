@@ -317,6 +317,10 @@ with tab2:
             user_diagnostic = st.text_input("Ingresa un diagnóstico (ej. Catarata, Cáncer de Mama, Apendicitis):")
             user_age = st.number_input("Ingresa la edad del paciente:", min_value=0, max_value=120, value=30)
             
+            st.markdown("##### Datos Administrativos (Simulador)")
+            user_prevision = st.selectbox("Selecciona la Previsión del Paciente:", ["FONASA", "ISAPRE", "Fuerzas Armadas (CAPREDENA/DIPRECA)", "Particular"])
+            user_formulario = st.radio("¿Cuenta con Formulario de Constancia GES firmado por el médico?", ["Sí, firmado", "No, pendiente"])
+            
             submit_button = st.form_submit_button("Consultar Modelo")
             
             if submit_button:
@@ -364,20 +368,30 @@ with tab2:
                             system_prompt = """Eres un experto médico y auditor del sistema de salud en Chile.
 MUY IMPORTANTE: "GES" significa "Garantías Explícitas en Salud" (Decreto Supremo N° 29).
 
-Al evaluar si un caso tiene probabilidad de ser GES, DEBES considerar y mencionar las siguientes Reglas Duras de Elegibilidad:
-1. Previsión: El paciente debe pertenecer a FONASA o ISAPRE (Excluye FF.AA. y Particulares).
-2. Red Cerrada: El paciente debe atenderse en la red definida por su seguro, no por libre elección.
-3. Formalidad: Se requiere el Formulario de Constancia GES firmado por el médico.
-4. Canasta: Solo se cubre lo definido en el arancel; tratamientos más caros o experimentales quedan 'fuera de canasta'.
-5. Edad: La edad es determinista. Ej. Artrosis de Cadera primaria es solo para mayores de 65 años. Escoliosis es para menores de 25 años. Catarata general es >15 años.
-6. Ley Salud Mental: En salud mental, las Isapres no pueden rechazar cobertura argumentando enfermedades preexistentes (Ley 21.331).
-7. Pérdida de derecho: Se pierde la garantía por 2 inasistencias médicas consecutivas.
+Evalúa el caso entregado cruzando los datos clínicos con las siguientes Reglas Duras de Elegibilidad:
+1. Previsión: Solo FONASA o ISAPRE. Excluye estrictamente a FF.AA. y Particulares.
+2. Red Cerrada: Obligatorio atenderse en la red definida por su seguro.
+3. Formalidad: Es obligatorio que el Formulario de Constancia GES esté firmado.
+4. Edad: Es determinista. Ej. Artrosis de Cadera primaria (>= 65 años), Escoliosis (< 25 años), Catarata (>15 años o congénita en bebés).
+5. Ley Salud Mental: Isapres no pueden rechazar cobertura por preexistencias psiquiátricas (Ley 21.331).
 
-Evalúa el diagnóstico y la edad proporcionada por el usuario. Cruza esta información con el dato estadístico (probabilidad) que se te inyectará en el prompt del usuario. Si la probabilidad es baja, evalúa si es porque choca con alguna regla de edad. Si la probabilidad es alta, recuérdale al usuario las obligaciones administrativas (Formulario, Red Cerrada).
+DEBES estructurar tu respuesta EXACTAMENTE en este formato Markdown:
 
-Responde SIEMPRE en español, de forma estructurada, profesional y citando explícitamente estas normativas de elegibilidad."""
+### 1. 📊 Análisis Empírico
+(Menciona aquí el dato estadístico inyectado sobre la probabilidad histórica).
 
-                            user_prompt = f"Paciente de {user_age} años con diagnóstico de '{user_diagnostic}'. Analiza este caso bajo el contexto GES. \n\n{rag_context}"
+### 2. 🩺 Criterio Clínico y Etario
+(Evalúa el Diagnóstico vs la Edad del paciente según las reglas GES).
+
+### 3. ⚖️ Criterio Administrativo y Previsional
+(Evalúa la Previsión y el estado del Formulario GES indicados por el usuario).
+
+### 4. 🛑 Veredicto Final
+(Concluye si es ELEGIBLE, NO ELEGIBLE, o PENDIENTE DE TRÁMITE, y justifica por qué).
+
+Responde SIEMPRE en español, de forma profesional y muy estructurada."""
+
+                            user_prompt = f"Paciente de {user_age} años.\nDiagnóstico: '{user_diagnostic}'.\nPrevisión: {user_prevision}.\nFormulario GES: {user_formulario}.\n\n{rag_context}\n\nGenera el Informe de Auditoría Estructurado."
 
                             
                             messages = [
