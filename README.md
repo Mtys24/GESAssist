@@ -56,7 +56,13 @@ Si deseas ejecutar este proyecto en tu propia máquina, sigue estos pasos:
    pip install -r requirements.txt
    ```
 
-4. **Ejecutar la aplicación Streamlit:**
+4. **Configurar el Asistente de IA (Opcional pero recomendado):**
+   Para habilitar la pestaña del Asistente de Inteligencia Artificial (Llama-3), debes configurar tu token gratuito de HuggingFace.
+   - Crea una copia del archivo `.env.example` y renómbralo a `.env`.
+   - Abre `.env` y pega tu token: `HF_TOKEN=hf_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`.
+   *(Si omites este paso, el dashboard funcionará perfectamente, pero la pestaña de la IA estará desactivada).*
+
+5. **Ejecutar la aplicación Streamlit:**
    ```bash
    streamlit run app.py
    ```
@@ -83,12 +89,12 @@ GESAssist/
 
 ## 🧑‍💻 Equipo de Trabajo
 
-| Integrante                | Rol en el Proyecto                 |
-|---------------------------|------------------------------------|
-| **Matías Manríquez**      | Data Scientist & Analista de Datos |
-| **José Salgado Escalona** | Data Scientist & Analista de Datos |
-| **Ignacio Madriaga**      | Data Scientist & Analista de Datos |
-| **Daniel Segovia**        | Data Scientist & Analista de Datos |
+| Integrante                | Rol en el Proyecto                 | GitHub                                      |
+|---------------------------|------------------------------------|---------------------------------------------|
+| **Matías Manríquez**      | Data Scientist & Analista de Datos | [@Mtys24](https://github.com/Mtys24)        |
+| **José Salgado Escalona** | Data Scientist & Analista de Datos | [@JoseRicardoSE](https://github.com/JoseRicardoSE) |
+| **Ignacio Madriaga**      | Data Scientist & Analista de Datos | [@VonCreed-tech](https://github.com/VonCreed-tech) |
+| **Daniel Segovia**        | Data Scientist & Analista de Datos | [@reyconker](https://github.com/reyconker)   |
 
 ---
 *Desarrollado para el proyecto final de Data Science.*
